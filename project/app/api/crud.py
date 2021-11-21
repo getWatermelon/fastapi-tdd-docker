@@ -23,3 +23,8 @@ async def post(payload: SummaryPayloadSchema) -> int:
     )
     await summary.save()
     return summary.id
+
+
+async def delete(id: int) -> int:
+    summary = await TextSummary.filter(id=id).first().delete()
+    return summary
